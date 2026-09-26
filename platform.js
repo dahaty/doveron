@@ -10,8 +10,8 @@
      Step: a = agent ids, s = system ids, v = verdict, k = price kind, fix = corrected action after a return. */
   var SCENARIOS={
     small:{
-      tier:'малого бизнеса',
-      rates:{read:.04,write:.20,fact:.36},
+      tier:'до 1 млн проверок в месяц',
+      rates:{read:.02,write:.10,fact:.40},
       inLabel:'ПОКУПАТЕЛЬ ПИШЕТ В ЧАТ МАГАЗИНА',
       inText:'«Есть 2 комплекта «Лён 2.0» евро? Если оформлю сейчас — до пятницы привезёте?»',
       outLabel:'ОТВЕТ ПОКУПАТЕЛЮ В ЧАТЕ',
@@ -42,8 +42,8 @@
       ]
     },
     mid:{
-      tier:'среднего бизнеса',
-      rates:{read:.03,write:.18,fact:.32},
+      tier:'1–10 млн проверок в месяц',
+      rates:{read:.01,write:.06,fact:.25},
       inLabel:'КЛИЕНТ ЗВОНИТ НА ЛИНИЮ ПРОДАЖ',
       inText:'«Это ООО «Ромашка», ИНН 7707123456. Нужно 30 кресел Ergo Pro, счёт и УПД — через Диадок.»',
       outLabel:'ПОДТВЕРЖДЕНИЕ КЛИЕНТУ',
@@ -73,8 +73,8 @@
       ]
     },
     retail:{
-      tier:'крупного ритейла',
-      rates:{read:.015,write:.10,fact:.20},
+      tier:'10–100 млн проверок в месяц',
+      rates:{read:.005,write:.03,fact:.15},
       inLabel:'ПОКУПАТЕЛЬ ПИШЕТ В МЕССЕНДЖЕР СЕТИ',
       inText:'«Пылесос Vortex X9 из заказа №М-88120 перестал держать заряд. Можно обменять на новый?»',
       outLabel:'ОТВЕТ ПОКУПАТЕЛЮ',
@@ -106,8 +106,8 @@
       ]
     },
     industry:{
-      tier:'промышленности',
-      rates:{read:.02,write:.14,fact:.28},
+      tier:'1–10 млн проверок в месяц',
+      rates:{read:.01,write:.06,fact:.25},
       inLabel:'ЗАЯВКА ОТ ОБОГАТИТЕЛЬНОЙ ФАБРИКИ',
       inText:'«Нужно 40 футеровочных плит для мельницы МШЦ-5500 к 15 октября — плановый ремонт, простой недопустим.»',
       outLabel:'ОТВЕТ ФАБРИКЕ',
@@ -188,14 +188,14 @@
       if(v==='bad')hub.classList.add('is-bad');else if(v)hub.classList.add('is-ok');
       verdict.textContent=v?HUBV[v]:'ОЖИДАЕТ ЗАПРОСА';
     }
-    function fmt(n){return n.toFixed(2).replace('.',',')+' ₽'}
+    function fmt(n){return n<1?(n*100).toLocaleString('ru-RU',{maximumFractionDigits:1})+' коп.':n.toFixed(2).replace('.',',')+' ₽'}
     function renderSum(){
       sumChecks.textContent=stats.checks;sumCost.textContent=fmt(stats.cost);sumFixed.textContent=stats.fixed;sumLeak.textContent=idx?'0':'—';
     }
-    var rate=function(n){return n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:3})+' ₽'};
+    var rate=function(n){return (n*100).toLocaleString('ru-RU',{maximumFractionDigits:1})+' коп.'};
     function renderNote(sc){
       if(!note)return;var r=sc.rates;
-      note.innerHTML='Тариф для '+sc.tier+': чтение '+rate(r.read)+' · действие '+rate(r.write)+' · проверка текста '+rate(r.fact)+'. Демонстрационные данные.';
+      note.innerHTML='Цена при объёме '+sc.tier+': чтение '+rate(r.read)+' · действие '+rate(r.write)+' · проверка текста '+rate(r.fact)+'. Демонстрационные данные.';
     }
     function reset(){
       stop();idx=0;stats={checks:0,cost:0,stop:0,fixed:0};
