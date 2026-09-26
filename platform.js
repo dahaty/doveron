@@ -202,7 +202,7 @@
       var sc=SCENARIOS[cur];
       renderCol(colA,'ИИ-АГЕНТЫ',sc.agents,false);renderCol(colS,'ВАШИ СИСТЕМЫ',sc.systems,true);
       inB.querySelector('span').textContent=sc.inLabel;inB.querySelector('p').textContent=sc.inText;
-      outB.querySelector('span').textContent=sc.outLabel;if(typeTimer){clearInterval(typeTimer);typeTimer=null}outB.querySelector('p').innerHTML='<span class="ex-typing">печатает<i></i><i></i><i></i></span>';
+      outB.querySelector('span').textContent=sc.outLabel;if(typeTimer){clearInterval(typeTimer);typeTimer=null}outB.querySelector('p').innerHTML='<span class="ex-typing">Печатает ответ<i></i><i></i><i></i></span>';
       outB.classList.add('is-empty');outB.classList.remove('is-ok');
       if(leakLabel)leakLabel.textContent=sc.leak;
       if(costLabel)costLabel.textContent=sc.costLabel||'СТОИМОСТЬ ЗАКАЗА';
