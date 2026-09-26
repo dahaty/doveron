@@ -11,7 +11,7 @@
   var SCENARIOS={
     small:{
       tier:'малого бизнеса',
-      rates:{read:.10,write:.50,fact:.90},
+      rates:{read:.04,write:.20,fact:.36},
       inLabel:'ПОКУПАТЕЛЬ ПИШЕТ В ЧАТ МАГАЗИНА',
       inText:'«Есть 2 комплекта «Лён 2.0» евро? Если оформлю сейчас — до пятницы привезёте?»',
       outLabel:'ОТВЕТ ПОКУПАТЕЛЮ В ЧАТЕ',
@@ -43,7 +43,7 @@
     },
     mid:{
       tier:'среднего бизнеса',
-      rates:{read:.08,write:.45,fact:.80},
+      rates:{read:.03,write:.18,fact:.32},
       inLabel:'КЛИЕНТ ЗВОНИТ НА ЛИНИЮ ПРОДАЖ',
       inText:'«Это ООО «Ромашка», ИНН 7707123456. Нужно 30 кресел Ergo Pro, счёт и УПД — через Диадок.»',
       outLabel:'ПОДТВЕРЖДЕНИЕ КЛИЕНТУ',
@@ -74,7 +74,7 @@
     },
     retail:{
       tier:'крупного ритейла',
-      rates:{read:.04,write:.25,fact:.50},
+      rates:{read:.015,write:.10,fact:.20},
       inLabel:'ПОКУПАТЕЛЬ ПИШЕТ В МЕССЕНДЖЕР СЕТИ',
       inText:'«Пылесос Vortex X9 из заказа №М-88120 перестал держать заряд. Можно обменять на новый?»',
       outLabel:'ОТВЕТ ПОКУПАТЕЛЮ',
@@ -107,7 +107,7 @@
     },
     industry:{
       tier:'промышленности',
-      rates:{read:.05,write:.35,fact:.70},
+      rates:{read:.02,write:.14,fact:.28},
       inLabel:'ЗАЯВКА ОТ ОБОГАТИТЕЛЬНОЙ ФАБРИКИ',
       inText:'«Нужно 40 футеровочных плит для мельницы МШЦ-5500 к 15 октября — плановый ремонт, простой недопустим.»',
       outLabel:'ОТВЕТ ФАБРИКЕ',
@@ -192,10 +192,10 @@
     function renderSum(){
       sumChecks.textContent=stats.checks;sumCost.textContent=fmt(stats.cost);sumFixed.textContent=stats.fixed;sumLeak.textContent=idx?'0':'—';
     }
-    function rate(n){return n.toFixed(2).replace('.',',')+' ₽'}
+    var rate=function(n){return n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:3})+' ₽'};
     function renderNote(sc){
       if(!note)return;var r=sc.rates;
-      note.innerHTML='Тариф для '+sc.tier+': чтение '+rate(r.read)+' · действие '+rate(r.write)+' · проверка текста '+rate(r.fact)+'. Демонстрационные данные. <a href="#calc">Посчитать для своего бизнеса →</a>';
+      note.innerHTML='Тариф для '+sc.tier+': чтение '+rate(r.read)+' · действие '+rate(r.write)+' · проверка текста '+rate(r.fact)+'. Демонстрационные данные.';
     }
     function reset(){
       stop();idx=0;stats={checks:0,cost:0,stop:0,fixed:0};
@@ -207,9 +207,9 @@
       if(leakLabel)leakLabel.textContent=sc.leak;
       if(costLabel)costLabel.textContent=sc.costLabel||'СТОИМОСТЬ ЗАКАЗА';
       renderNote(sc);
-      log.innerHTML='<li class="ex-log-empty">Нажмите «Запустить пример» — каждое действие агентов появится здесь с результатом проверки.</li>';
+      log.innerHTML='<li class="ex-log-empty">Нажмите «Запустить» — каждое действие агентов появится здесь с результатом проверки.</li>';
       clearNodes();setHub(null,null);renderSum();
-      playBtn.querySelector('span:last-child').textContent='Запустить пример';
+      playBtn.querySelector('span:last-child').textContent='Запустить';
       stepBtn.disabled=false;
       if(live)live.textContent='';
     }
