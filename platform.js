@@ -142,6 +142,14 @@
   var root=document.querySelector('[data-ex]');
   if(root){
     var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var typeTimer=null;
+    function typeReply(text){
+      var p=outB.querySelector('p');
+      if(typeTimer){clearInterval(typeTimer);typeTimer=null}
+      if(reduced){p.textContent=text;return}
+      var n=0;p.textContent='';
+      typeTimer=setInterval(function(){n+=2;p.textContent=text.slice(0,n);if(n>=text.length){clearInterval(typeTimer);typeTimer=null}},22);
+    }
     var tabs=root.querySelectorAll('[data-ex-case]');
     var log=root.querySelector('[data-ex-log]');
     var hub=root.querySelector('[data-ex-hub]');
@@ -194,7 +202,7 @@
       var sc=SCENARIOS[cur];
       renderCol(colA,'ИИ-АГЕНТЫ',sc.agents,false);renderCol(colS,'ВАШИ СИСТЕМЫ',sc.systems,true);
       inB.querySelector('span').textContent=sc.inLabel;inB.querySelector('p').textContent=sc.inText;
-      outB.querySelector('span').textContent=sc.outLabel;outB.querySelector('p').textContent='Появится после проверки';
+      outB.querySelector('span').textContent=sc.outLabel;if(typeTimer){clearInterval(typeTimer);typeTimer=null}outB.querySelector('p').innerHTML='<span class="ex-typing">печатает<i></i><i></i><i></i></span>';
       outB.classList.add('is-empty');outB.classList.remove('is-ok');
       if(leakLabel)leakLabel.textContent=sc.leak;
       if(costLabel)costLabel.textContent=sc.costLabel||'СТОИМОСТЬ ЗАКАЗА';
@@ -215,7 +223,7 @@
       if(st.k){stats.checks++;stats.cost+=sc.rates[st.k]}
       if(st.v==='bad')stats.stop++;
       if(st.fix)stats.fixed++;
-      if(st.reply){outB.querySelector('p').textContent=st.reply;outB.classList.remove('is-empty');outB.classList.add('is-ok')}
+      if(st.reply){typeReply(st.reply);outB.classList.remove('is-empty');outB.classList.add('is-ok')}
       var li=document.createElement('li');
       li.innerHTML='<span>'+String(idx+1).padStart(2,'0')+'</span><span></span><span></span><em class="'+CLS[st.v]+'">'+(st.fix?'ИСПРАВЛЕНО':LABEL[st.v])+'</em>';
       li.children[1].textContent=st.what;li.children[2].textContent=st.check;

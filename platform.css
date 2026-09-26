@@ -309,3 +309,8 @@ dialog .consent-check a{color:#8fc2ff;text-decoration:underline}
 @media(max-width:760px){.ex-sum div:nth-child(odd):last-child{grid-column:1/-1}}
 /* scorecard as cards on phones */
 @media(max-width:600px){.score table,.score tbody{display:block;width:100%}.score thead{display:none}.score tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:14px 16px;border-top:1px solid #1b2636}.score tbody tr:first-child{border-top:0}.score td{display:block;border:0!important;padding:0!important;text-align:left!important}.score td:nth-child(2),.score td:nth-child(3){display:none!important}.score td:first-child{grid-column:1;grid-row:1;width:auto!important}.score td:nth-child(5){grid-column:2;grid-row:1 / span 2;text-align:right!important}.score td:nth-child(5) .bar{flex-direction:column;align-items:flex-end;gap:6px;font-size:20px;font-weight:600;color:var(--vx-text)}.score td:nth-child(5) .bar i{display:inline-block!important;width:64px}.score td:nth-child(4){grid-column:1;grid-row:2;font-size:13px;color:var(--vx-muted)}.score td:nth-child(4):before{content:'Ошибок в фактах: '}.score-head{padding:14px 16px}.score-foot{padding:12px 16px}}
+.ex-typing{display:inline-flex;align-items:center;gap:3px;font-style:normal;color:#7f9bc1}
+.ex-typing i{width:5px;height:5px;border-radius:50%;background:#7fb0f0;display:inline-block;animation:ex-dot 1.2s infinite ease-in-out}
+.ex-typing i:first-of-type{margin-left:4px}.ex-typing i:nth-of-type(2){animation-delay:.2s}.ex-typing i:nth-of-type(3){animation-delay:.4s}
+@keyframes ex-dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.ex-bubble.is-empty p .ex-typing{font-style:normal}
