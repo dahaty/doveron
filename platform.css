@@ -43,14 +43,6 @@
 .ex-hub.is-bad{border-color:var(--vx-bad);box-shadow:0 0 50px #ff6b6b22}.ex-hub.is-wait{border-color:var(--vx-wait);box-shadow:0 0 50px #f5b94722}.ex-hub.is-ok{border-color:#3ecf8e;box-shadow:0 0 50px #3ecf8e1c}
 .ex-hub-verdict{font:12px var(--mono);letter-spacing:.05em;color:#7f9bc1;min-height:18px}
 .ex-hub.is-ok .ex-hub-verdict{color:var(--vx-ok)}.ex-hub.is-bad .ex-hub-verdict{color:var(--vx-bad)}.ex-hub.is-wait .ex-hub-verdict{color:var(--vx-wait)}
-.ex-tg{position:absolute;left:50%;top:calc(100% - 6px);width:300px;background:#17212b;border:1px solid #2b5278;border-radius:12px;padding:12px 14px;box-shadow:0 14px 40px #000a;z-index:3;opacity:0;transform:translate(-50%,10px) scale(.97);pointer-events:none;transition:.35s}
-.ex-tg.show{opacity:1;transform:translate(-50%,0)}
-.ex-tg>span{display:flex;align-items:center;gap:8px;font-size:12px;color:#8fb4d9}
-.ex-tg>span img{width:18px;height:18px;border-radius:50%}
-.ex-tg p{font-size:13px;margin:8px 0 10px;color:#e4edf7;line-height:1.45}
-.ex-tg div{display:flex;gap:6px}
-.ex-tg div b{flex:1;text-align:center;font-size:12px;font-weight:550;padding:7px;border-radius:7px;background:#223449;color:#9fc6ee}
-.ex-tg div b.pressed{background:#2f8f66;color:#fff}
 .ex-log{margin-top:22px;border:1px solid var(--vx-line);border-radius:12px;background:#080d14;overflow:hidden}
 .ex-log-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--vx-line);font:11px var(--mono);letter-spacing:.06em;color:var(--vx-dim)}
 .ex-log ol{list-style:none;margin:0;padding:6px 0;min-height:120px;max-height:330px;overflow:auto;counter-reset:l}
@@ -142,9 +134,9 @@
 .price-note{font-size:12px;color:var(--vx-dim);margin-top:14px}
 
 @media(max-width:1100px){.adv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ex-grid{gap:18px}.ex-log li{grid-template-columns:24px minmax(0,1fr) minmax(0,1fr) 118px;gap:10px}}
-@media(max-width:900px){.vx-head,.ind-grid{grid-template-columns:1fr;gap:20px}.ex-grid{grid-template-columns:1fr;gap:14px}.ex-hub{min-height:0}.ex-hub:before,.ex-hub:after{display:none}.ex-col-agents,.ex-col-systems{grid-template-columns:repeat(2,minmax(0,1fr))}.ex-col>b{grid-column:1/-1}.ex-tg{position:fixed;left:auto;top:auto;right:16px;bottom:16px}.ex-tg,.ex-tg.show{transform:none}[data-ex]:not(.ex-visible) .ex-tg{opacity:0}.ba-grid,.price-grid,.price-units{grid-template-columns:1fr}.ex-col-agents .ex-node.is-active,.ex-col-systems .ex-node.is-active{--nudge:0}}
+@media(max-width:900px){.vx-head,.ind-grid{grid-template-columns:1fr;gap:20px}.ex-grid{grid-template-columns:1fr;gap:14px}.ex-hub{min-height:0}.ex-hub:before,.ex-hub:after{display:none}.ex-col-agents,.ex-col-systems{grid-template-columns:repeat(2,minmax(0,1fr))}.ex-col>b{grid-column:1/-1}.ba-grid,.price-grid,.price-units{grid-template-columns:1fr}.ex-col-agents .ex-node.is-active,.ex-col-systems .ex-node.is-active{--nudge:0}}
 @media(max-width:760px){.vx-section{padding:56px 0}.vx-head>p{font-size:15px}.ex-board{padding:14px}.ex-client{grid-template-columns:1fr;gap:10px}.ex-log li{grid-template-columns:22px minmax(0,1fr);gap:4px 10px}.ex-log li>span:nth-child(3),.ex-log li>em{grid-column:2}.ex-foot{flex-direction:column;align-items:stretch}.ex-controls{justify-content:stretch}.ex-controls button{flex:1;justify-content:center}.adv-grid{grid-template-columns:1fr}.ba-card,.price-card{padding:20px}.ba-card h3{font-size:23px}.score th:nth-child(3),.score td:nth-child(3){display:none}.score td,.score th{padding-left:14px;padding-right:14px}.score .bar i{width:40px}.ind-quote{font-size:17px}.ex-node{padding:9px 10px;gap:9px}.ex-node img,.ex-node .ex-av{width:26px;height:26px}.ex-node strong{font-size:13px}.ex-node small{font-size:11px}}
-@media(max-width:420px){.ex-col-agents,.ex-col-systems{grid-template-columns:1fr}.ex-tg{left:16px;width:auto}}
+@media(max-width:420px){.ex-col-agents,.ex-col-systems{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.vx *{animation:none!important;transition:none!important}}
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .tech-header .menu-toggle{margin-left:auto}
@@ -313,6 +305,7 @@ dialog .consent-check a{color:#8fc2ff;text-decoration:underline}
 @media(max-width:900px){.doc-grid{grid-template-columns:1fr;gap:20px}.doc-toc{display:none}}
 @media(max-width:560px){.doc{padding:24px 0 56px}.doc-tabs{gap:6px}.doc-tabs a{font-size:12.5px;padding:8px 10px}.doc-req{grid-template-columns:1fr;gap:2px}.doc-req dd{margin-bottom:10px}.doc-body p,.doc-body li{font-size:15px}}
 .brand-mark{padding:0!important;display:inline-grid!important;place-items:center}.brand-mark svg{width:88%!important;height:88%!important;display:block}
-.ex-node-human{border-style:dashed}
-@media(max-width:900px){.ex-col>.ex-node:nth-child(4):last-child{grid-column:1/-1}}
-@media(max-width:900px){.ex-tg{bottom:92px}}
+@media(max-width:900px){.ex-col>.ex-node:nth-child(even):last-child{grid-column:1/-1}}
+@media(max-width:760px){.ex-sum div:nth-child(odd):last-child{grid-column:1/-1}}
+/* scorecard as cards on phones */
+@media(max-width:600px){.score table,.score tbody{display:block;width:100%}.score thead{display:none}.score tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:14px 16px;border-top:1px solid #1b2636}.score tbody tr:first-child{border-top:0}.score td{display:block;border:0!important;padding:0!important;text-align:left!important}.score td:nth-child(2),.score td:nth-child(3){display:none!important}.score td:first-child{grid-column:1;grid-row:1;width:auto!important}.score td:nth-child(5){grid-column:2;grid-row:1 / span 2;text-align:right!important}.score td:nth-child(5) .bar{flex-direction:column;align-items:flex-end;gap:6px;font-size:20px;font-weight:600;color:var(--vx-text)}.score td:nth-child(5) .bar i{display:inline-block!important;width:64px}.score td:nth-child(4){grid-column:1;grid-row:2;font-size:13px;color:var(--vx-muted)}.score td:nth-child(4):before{content:'Ошибок в фактах: '}.score-head{padding:14px 16px}.score-foot{padding:12px 16px}}
