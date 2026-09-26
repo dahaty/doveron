@@ -34,3 +34,20 @@
 .pt-head{background:#0f1826}.pt-head span{font:10px var(--mono);letter-spacing:.07em;color:#7f9bc1;text-transform:uppercase}
 .pt-row>span{color:#c6d4e7;font-size:14.5px}.pt-row b{font-size:17px;font-weight:600;color:#eef3fa;font-variant-numeric:tabular-nums}
 @media(max-width:560px){.pt-row{grid-template-columns:1fr 1fr 1fr;padding:12px 14px}.pt-row>span:first-child{grid-column:1/-1;font-weight:600;color:#9fd0ff}.pt-head>span:first-child{display:none}.pt-head span{font-size:9px}.pt-row b{font-size:15px}}
+/* plans v4 */
+.price-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.price-grid-4 .price-card .price{font-size:30px}
+.price-grid-4 .price-card li{font-size:13.5px}
+.price-fence{margin-top:16px;border:1px solid #2b3b52;border-radius:14px;overflow:hidden;background:#0d141f}
+.price-fence h3{font-size:16px;font-weight:600;margin:0;padding:14px 18px;border-bottom:1px solid #1b2636;color:#eef3fa}
+.pf-row{display:grid;grid-template-columns:1.1fr repeat(4,minmax(0,1fr));gap:10px;padding:11px 18px;border-top:1px solid #1b2636;align-items:center}
+.pf-row:nth-of-type(1){border-top:0}
+.pf-head{background:#0f1826}.pf-head span{font:10px var(--mono);letter-spacing:.07em;color:#7f9bc1;text-transform:uppercase}
+.pf-row>span{color:#91a3bd;font-size:13.5px}.pf-row b{font-size:14px;font-weight:550;color:#dbe7f7}
+.price-fence p{margin:0;padding:12px 18px;border-top:1px solid #1b2636;font-size:13px;color:#697d97}
+.calc-presets{display:flex;flex-wrap:wrap;gap:6px}
+.calc-presets button{cursor:pointer;background:#0f1622;border:1px solid #2b3b52;color:#91a3bd;border-radius:999px;padding:7px 12px;font-size:13px}
+.calc-presets button:hover{color:#eef3fa;border-color:#4f8fe0}
+.calc-out .is-main em{max-width:60%}
+@media(max-width:1100px){.price-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){.price-grid-4{grid-template-columns:1fr!important}.pf-row{grid-template-columns:1fr 1fr;gap:4px 12px;padding:12px 14px}.pf-row>span:first-child{grid-column:1/-1;color:#9fd0ff;font-weight:600}.pf-head{display:none}.pf-row b::before{display:block;font:9px var(--mono);letter-spacing:.06em;color:#697d97;text-transform:uppercase}.pf-row b:nth-of-type(1)::before{content:'Старт'}.pf-row b:nth-of-type(2)::before{content:'Бизнес'}.pf-row b:nth-of-type(3)::before{content:'Рост'}.pf-row b:nth-of-type(4)::before{content:'Корпоративный'}.calc-out .is-main em{max-width:100%}}

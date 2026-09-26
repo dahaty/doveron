@@ -322,3 +322,19 @@ dialog .consent-check a{color:#8fc2ff;text-decoration:underline}
 .ex-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .ex-tabs button{width:100%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:46px}
 @media(max-width:760px){.ex-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.ex-tabs button{font-size:14px;padding:11px 8px}}
+/* demo chat thread */
+.ex-chat{border:1px solid var(--vx-line);border-radius:12px;background:#0a111b;margin-bottom:22px;overflow:hidden;min-width:0}
+.ex-chat-head{display:flex;align-items:center;gap:9px;padding:10px 16px;border-bottom:1px solid var(--vx-line);font:10.5px var(--mono);letter-spacing:.06em;color:var(--vx-dim)}
+.ex-chat-head [data-ex-channel]{color:#b8cbe4;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ex-chat-side{margin-left:auto;white-space:nowrap}
+.ex-chat-dot{width:7px;height:7px;border-radius:50%;background:var(--vx-ok);box-shadow:0 0 8px #3ecf8e88;flex:none}
+.ex-thread{display:flex;flex-direction:column;gap:10px;padding:14px 16px;height:250px;overflow-y:auto;overscroll-behavior:contain}
+.ex-thread-empty{margin:auto;color:var(--vx-dim);font-size:13px;font-style:italic;text-align:center;max-width:440px}
+.ex-msg{max-width:min(78%,640px);padding:9px 13px 10px;border-radius:12px;border:1px solid var(--vx-line);background:#131c2a;animation:ex-in .3s ease both;flex:none}
+.ex-msg.from-client{align-self:flex-start;border-bottom-left-radius:4px}
+.ex-msg.from-agent{align-self:flex-end;background:#13294a;border-color:#2f5d99;border-bottom-right-radius:4px}
+.ex-msg-who{display:block;font:10px var(--mono);letter-spacing:.05em;color:var(--vx-dim);margin-bottom:4px}
+.ex-msg.from-agent .ex-msg-who{color:#86b4ec}
+.ex-msg p{margin:0;font-size:14.5px;line-height:1.5;color:#dce6f3;overflow-wrap:anywhere;min-height:1.5em}
+.ex-msg.is-typing p{color:var(--vx-dim)}
+@media(max-width:760px){.ex-chat{margin-bottom:16px}.ex-chat-side{display:none}.ex-chat-head{padding:9px 12px}.ex-thread{height:auto;min-height:150px;max-height:340px;padding:12px}.ex-msg{max-width:90%}.ex-msg p{font-size:14px}}
