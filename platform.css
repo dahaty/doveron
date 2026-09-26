@@ -313,3 +313,6 @@ dialog .consent-check a{color:#8fc2ff;text-decoration:underline}
 @media(max-width:900px){.doc-grid{grid-template-columns:1fr;gap:20px}.doc-toc{display:none}}
 @media(max-width:560px){.doc{padding:24px 0 56px}.doc-tabs{gap:6px}.doc-tabs a{font-size:12.5px;padding:8px 10px}.doc-req{grid-template-columns:1fr;gap:2px}.doc-req dd{margin-bottom:10px}.doc-body p,.doc-body li{font-size:15px}}
 .brand-mark{padding:0!important;display:inline-grid!important;place-items:center}.brand-mark svg{width:88%!important;height:88%!important;display:block}
+.ex-node-human{border-style:dashed}
+@media(max-width:900px){.ex-col>.ex-node:nth-child(4):last-child{grid-column:1/-1}}
+@media(max-width:900px){.ex-tg{bottom:92px}}
